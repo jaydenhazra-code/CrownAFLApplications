@@ -1,0 +1,605 @@
+/* Crown RP AFL — Recruitment Portal */
+
+:root {
+  color-scheme: dark;
+  --bg: #090711;
+  --panel: #141020;
+  --panel-light: #1c162c;
+  --gold: #d9b45b;
+  --gold-light: #f3d98e;
+  --text: #f7f3ff;
+  --muted: #aaa2bb;
+  --border: rgba(217, 180, 91, 0.24);
+  --danger: #ff7777;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(101, 61, 157, 0.22), transparent 48%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+a {
+  color: var(--gold-light);
+}
+
+.shell,
+.container {
+  width: min(100% - 36px, 1040px);
+  margin-inline: auto;
+}
+
+.shell {
+  position: relative;
+  padding: 30px 0 24px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 42px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.brand small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.crown-mark,
+.brand-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(145deg, #2c203e, #151020);
+  color: var(--gold-light);
+  font-size: 1.7rem;
+}
+
+.ambient {
+  position: absolute;
+  z-index: -1;
+  top: 130px;
+  left: 50%;
+  width: min(700px, 100%);
+  height: 500px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(102, 56, 155, 0.12);
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.hero {
+  padding: clamp(28px, 6vw, 64px) 0 34px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(217, 180, 91, 0.07);
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.hero h1 {
+  margin: 22px 0 16px;
+  font-size: clamp(2.6rem, 8vw, 5.3rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 1.04;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--gold-light);
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.12rem);
+}
+
+.stats,
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+
+.stat,
+.application-card,
+.loading-panel,
+.success-panel {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(28, 22, 44, 0.96), rgba(16, 12, 25, 0.98));
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+}
+
+.stat {
+  padding: 18px 12px;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  color: var(--gold-light);
+  font-size: 1.3rem;
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 26px 0;
+}
+
+.btn,
+button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #1b1407;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.btn:hover,
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.07);
+}
+
+.btn-secondary {
+  border-color: var(--border);
+  background: var(--panel-light);
+  color: var(--text);
+}
+
+.application-card,
+.loading-panel,
+.success-panel {
+  margin: 24px 0;
+  padding: clamp(20px, 4vw, 38px);
+}
+
+.application-card h2,
+.loading-panel h2,
+.success-panel h2 {
+  margin-top: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.section-description,
+.muted {
+  color: var(--muted);
+}
+
+.question-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 24px 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.field-full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+.field input,
+.field select,
+.field textarea,
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid rgba(185, 169, 211, 0.2);
+  border-radius: 10px;
+  outline: none;
+  background: #0e0b17;
+  color: var(--text);
+}
+
+.field textarea,
+textarea {
+  min-height: 115px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(217, 180, 91, 0.1);
+}
+
+.field input::placeholder,
+.field textarea::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #766e86;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.form-error {
+  margin: 16px 0;
+  color: var(--danger);
+}
+
+.progress-track {
+  overflow: hidden;
+  height: 8px;
+  margin: 20px 0;
+  border-radius: 999px;
+  background: #2b2438;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition: width 0.3s ease;
+}
+
+footer {
+  padding: 30px 0 12px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+footer strong {
+  color: var(--gold-light);
+}
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 650px) {
+  .shell,
+  .container {
+    width: min(100% - 24px, 1040px);
+  }
+
+  header {
+    margin-bottom: 20px;
+  }
+
+  .stats,
+  .question-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-full {
+    grid-column: auto;
+  }
+
+  .hero {
+    padding-top: 32px;
+  }
+
+  .form-actions > * {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ===== Crown RP premium experience upgrades ===== */
+
+:root {
+  --gold-glow: rgba(217, 180, 91, 0.22);
+}
+
+body {
+  background-attachment: fixed;
+}
+
+.shell {
+  isolation: isolate;
+}
+
+.hero {
+  position: relative;
+  animation: crown-hero-enter 900ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hero h1 {
+  text-shadow: 0 0 55px rgba(217, 180, 91, 0.12);
+}
+
+.hero h1 span {
+  background: linear-gradient(
+    110deg,
+    #f9e8b2,
+    #d9b45b 45%,
+    #fff3ca 65%,
+    #b78b36
+  );
+  background-size: 220% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: crown-gold-shimmer 7s linear infinite;
+}
+
+.crown-mark,
+.brand-icon {
+  box-shadow: 0 0 30px var(--gold-glow);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.crown-mark:hover,
+.brand-icon:hover {
+  transform: translateY(-3px) rotate(-4deg);
+  box-shadow: 0 0 40px rgba(217, 180, 91, 0.3);
+}
+
+.stat,
+.application-card,
+.loading-panel,
+.success-panel {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: border-color 250ms ease, transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217, 180, 91, 0.5);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.btn,
+button[type="submit"] {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(217, 180, 91, 0.12);
+}
+
+.btn:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+.loading-panel {
+  text-align: center;
+}
+
+.loading-panel h2 {
+  animation: crown-text-enter 450ms ease both;
+}
+
+.loading-panel #countdown {
+  display: inline-grid;
+  min-width: 58px;
+  min-height: 58px;
+  place-items: center;
+  margin: 10px 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: rgba(217, 180, 91, 0.08);
+  color: var(--gold-light);
+  font-size: 1.5rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 0 30px var(--gold-glow);
+}
+
+.progress-track {
+  height: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.progress-bar {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #9e742b, #f9e8b2, #d9b45b);
+  box-shadow: 0 0 18px rgba(217, 180, 91, 0.35);
+  transition: width 900ms cubic-bezier(.2,.8,.2,1);
+}
+
+.progress-bar::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  content: "";
+  animation: crown-progress-shine 1.8s ease-in-out infinite;
+}
+
+.field {
+  animation: crown-text-enter 400ms ease both;
+}
+
+.field label {
+  transition: color 180ms ease;
+}
+
+.field:focus-within label {
+  color: var(--gold-light);
+}
+
+.form-error:not(:empty) {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 119, 119, 0.25);
+  border-radius: 10px;
+  background: rgba(255, 80, 80, 0.07);
+}
+
+.success-panel {
+  text-align: center;
+}
+
+.success-panel h2 {
+  color: var(--gold-light);
+}
+
+[hidden],
+.hidden {
+  display: none !important;
+}
+
+@keyframes crown-hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes crown-text-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes crown-gold-shimmer {
+  to {
+    background-position: 220% center;
+  }
+}
+
+@keyframes crown-progress-shine {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090711">
+  <meta name="description" content="Crown RP AFL recruitment portal.">
+  <title>Crown RP | AFL Recruitment</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script src="/script.js" defer></script>
+</head>
+
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+
+  <main class="shell">
+    <header>
+      <div class="brand">
+        <div class="crown-mark" aria-hidden="true">♛</div>
+        <div>
+          CROWN RP
+          <small>AFL Recruitment Portal</small>
+        </div>
+      </div>
+      <div style="margin-left:auto">
+        <span class="eyebrow">● APPLICATIONS OPEN</span>
+      </div>
+    </header>
+
+    <!-- Welcome screen -->
+    <section id="hero" class="hero" aria-labelledby="heroTitle">
+      <div class="eyebrow">THE CROWN AWAITS</div>
+
+      <h1 id="heroTitle">
+        Earn your place.
+        <span>Represent the crown.</span>
+      </h1>
+
+      <p>
+        Ready to join AFL? Complete your application honestly and show us
+        that you have the professionalism, dedication, and teamwork to
+        represent Crown RP.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>12</strong>
+          <span>Questions</span>
+        </div>
+        <div class="stat">
+          <strong>10 sec</strong>
+          <span>Preparation</span>
+        </div>
+        <div class="stat">
+          <strong>Respect</strong>
+          <span>Required</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="beginBtn" class="btn" type="button">
+          Begin Application <span aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <p class="muted">
+        By applying, you agree to follow city rules and AFL standards.
+      </p>
+    </section>
+
+    <!-- Application preparation loading screen -->
+    <section
+      id="loadingPanel"
+      class="loading-panel hidden"
+      aria-live="polite"
+      aria-hidden="true"
+      aria-labelledby="loadingTitle"
+    >
+      <div class="crown-mark" style="margin:0 auto 22px" aria-hidden="true">♛</div>
+
+      <div class="eyebrow">CROWN RP · AFL</div>
+      <h2 id="loadingTitle">Initializing recruitment</h2>
+      <p id="loadingText" class="muted">
+        Preparing your Crown RP experience...
+      </p>
+
+      <div
+        class="progress-track"
+        role="progressbar"
+        aria-label="Application preparation progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+      >
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <p class="muted">
+        Preparing your application ·
+        <strong id="countdown">10</strong>
+      </p>
+    </section>
+
+    <!-- Application section -->
+    <section
+      id="applicationForm"
+      class="application-card hidden"
+      aria-hidden="true"
+      aria-labelledby="applicationTitle"
+    >
+      <div class="eyebrow">STAGE 01 · YOUR APPLICATION</div>
+
+      <h2 id="applicationTitle">Your journey starts here.</h2>
+      <p class="section-description">
+        Answer all 12 questions carefully. Every field is required.
+      </p>
+
+      <!-- IMPORTANT: This is the actual form handled by script.js. -->
+      <form id="applicationFields">
+        <div class="question-grid">
+
+          <div class="field">
+            <label for="cityNameId">1. City name and city ID *</label>
+            <input
+              id="cityNameId"
+              name="cityNameId"
+              type="text"
+              placeholder="Your city name and ID"
+              required
+              maxlength="200"
+            >
+          </div>
+
+          <div class="field">
+            <label for="discordId">2. Discord User ID *</label>
+            <input
+              id="discordId"
+              name="discordId"
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]{17,20}"
+              title="Enter your numeric Discord User ID (17–20 digits)."
+              placeholder="Your numeric Discord ID"
+              required
+              maxlength="20"
+            >
+            <small class="muted">
+              Enter your numeric Discord User ID, not your username.
+            </small>
+          </div>
+
+          <div class="field">
+            <label for="ageDob">3. Age and date of birth *</label>
+            <input
+              id="ageDob"
+              name="ageDob"
+              type="text"
+              placeholder="Your age and date of birth"
+              required
+              maxlength="200"
+            >
+          </div>
+
+          <div class="field">
+            <label for="discordNameId">4. Discord name - Discord ID *</label>
+            <input
+              id="discordNameId"
+              name="discordNameId"
+              type="text"
+              placeholder="Username and ID"
+              required
+              maxlength="200"
+            >
+          </div>
+
+          <div class="field field-full">
+            <label for="availability">5. What is your availability? *</label>
+            <select id="availability" name="availability" required>
+              <option value="">Select your availability</option>
+              <option value="Morning">Morning</option>
+              <option value="Midday">Midday</option>
+              <option value="Evening">Evening</option>
+              <option value="Late night">Late night</option>
+              <option value="Flexible">Flexible / varies</option>
+            </select>
+          </div>
+
+          <div class="field field-full">
+            <label for="whyAccept">6. Why should we accept you into AFL? *</label>
+            <textarea
+              id="whyAccept"
+              name="whyAccept"
+              placeholder="Explain what makes you a strong candidate..."
+              required
+              minlength="10"
+              maxlength="1024"
+            ></textarea>
+          </div>
+
+          <div class="field field-full">
+            <label for="goals">7. What are your goals within AFL? *</label>
+            <textarea
+              id="goals"
+              name="goals"
+              placeholder="Describe your goals and ambitions..."
+              required
+              minlength="10"
+              maxlength="1024"
+            ></textarea>
+          </div>
+
+          <div class="field field-full">
+            <label for="expectations">
+              8. What expectations do you have while being part of AFL? *
+            </label>
+            <textarea
+              id="expectations"
+              name="expectations"
+              placeholder="What do you expect from the team and yourself?"
+              required
+              minlength="10"
+              maxlength="1024"
+            ></textarea>
+          </div>
+
+          <div class="field field-full">
+            <label for="salesNo">
+              9. What would you do if a client says no to your sales? *
+            </label>
+            <textarea
+              id="salesNo"
+              name="salesNo"
+              placeholder="Explain how you would respond professionally..."
+              required
+              minlength="10"
+              maxlength="1024"
+            ></textarea>
+          </div>
+
+          <div class="field field-full">
+            <label for="permAbuse">
+              10. Give us 5 examples of permission abuse. *
+            </label>
+            <textarea
+              id="permAbuse"
+              name="permAbuse"
+              placeholder="List five examples and explain them..."
+              required
+              minlength="10"
+              maxlength="1024"
+            ></textarea>
+          </div>
+
+          <div class="field field-full">
+            <label for="teamVc">
+              11. Why is it mandatory to be in your team VC? *
+            </label>
+            <textarea
+              id="teamVc"
+              name="teamVc"
+              placeholder="Explain the importance of team voice communication..."
+              required
+              minlength="10"
+              maxlength="1024"
+            ></textarea>
+          </div>
+
+          <div class="field field-full">
+            <label for="rules">
+              12. Do you understand AFL rules and consequences? *
+            </label>
+            <textarea
+              id="rules"
+              name="rules"
+              placeholder="Explain your understanding of the rules..."
+              required
+              minlength="10"
+              maxlength="1024"
+            ></textarea>
+          </div>
+
+        </div>
+
+        <p
+          id="formError"
+          class="form-error"
+          role="alert"
+          aria-live="polite"
+        ></p>
+
+        <div class="form-actions">
+          <span class="muted">* All fields are required.</span>
+          <button class="btn" type="submit">
+            Submit Application <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <p class="muted">
+          Your application will be sent to the Crown RP AFL review team
+          through Discord.
+        </p>
+      </form>
+    </section>
+
+    <!-- Submission progress -->
+    <section
+      id="submitLoading"
+      class="loading-panel hidden"
+      aria-live="polite"
+      aria-hidden="true"
+    >
+      <div class="crown-mark" style="margin:0 auto 22px" aria-hidden="true">♛</div>
+      <h2>Submitting your application</h2>
+      <p class="muted">
+        Contacting the recruitment system. Please keep this page open.
+      </p>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-bar" style="width:65%"></div>
+      </div>
+    </section>
+
+    <!-- Submission confirmation -->
+    <section
+      id="successPanel"
+      class="success-panel hidden"
+      aria-live="polite"
+      aria-hidden="true"
+    >
+      <div class="crown-mark" style="margin:0 auto 22px" aria-hidden="true">✓</div>
+
+      <div class="eyebrow">APPLICATION SUBMITTED</div>
+      <h2>Your journey has begun.</h2>
+
+      <p class="section-description">
+        Your application was received by the recruitment system. The AFL
+        team will review it through Discord. Please wait for an update.
+      </p>
+
+      <div class="actions">
+        <button id="backHomeBtn" class="btn btn-secondary" type="button">
+          Return to Home
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      <div style="font-size:1.4rem;color:var(--gold-light)" aria-hidden="true">♛</div>
+      <strong>CROWN RP AFL</strong> · Recruitment Portal
+      <p>Respect. Professionalism. Teamwork.</p>
+    </footer>
+  </main>
+</body>
+</html>
