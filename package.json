@@ -1,0 +1,15 @@
+{
+  "name": "crown-rp-afl-application",
+  "version": "1.0.0",
+  "description": "Crown RP AFL application website and Discord review bot",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
